@@ -1,11 +1,11 @@
 const { default: axios } = require("axios");
 const express = require("express");
 const app = express();
-const port = 3000;
 
 require("dotenv").config();
 
 const baseUrl = process.env.BASE_URL;
+const port = process.env.PORT || 3000;
 
 app.use("/", async (req, res) => {
   const path = req.path;
