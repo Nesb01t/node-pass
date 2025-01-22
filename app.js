@@ -4,15 +4,24 @@ const app = express();
 
 require("dotenv").config();
 
-const baseUrl = process.env.BASE_URL;
 const port = process.env.PORT || 3000;
 
 app.use("/", async (req, res) => {
   const path = req.path;
 
+  let startUrl;
+
+  if (path.startsWith("/-")) {
+    startUrl = "https://assets.mercari-shops-static.com";
+  } else if (path.startsWith("/item")) {
+    startUrl = "https://static.mercdn.net";
+  } else {
+    startUrl = "https://static.mercdn.net";
+  }
+
   const config = {
     method: "get",
-    url: `${baseUrl}${path}`,
+    url: `${startUrl}${path}`,
     responseType: "arraybuffer",
     headers: {
       "User-Agent": "Apifox/1.0.0 (https://apifox.com)",
