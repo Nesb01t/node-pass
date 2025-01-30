@@ -19,6 +19,8 @@ app.use("/", async (req, res) => {
     startUrl = "https://static.mercdn.net";
   }
 
+  console.log(path);
+
   const config = {
     method: "get",
     url: `${startUrl}${path}`,
